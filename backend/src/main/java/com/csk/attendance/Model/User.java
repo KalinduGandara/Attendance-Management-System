@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Table(name = "\"user\"") // Quoted table name
 @Getter
 @Setter
 @NoArgsConstructor
