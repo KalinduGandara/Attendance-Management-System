@@ -1,10 +1,11 @@
-package com.csk.attendance.Controller;
+package com.csk.attendance.controller;
 
-import com.csk.attendance.Model.User;
-import com.csk.attendance.Service.UserService;
+import com.csk.attendance.service.UserService;
+import com.csk.attendance.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/users")
@@ -27,17 +28,17 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable long id) {
+    public User getUserById(@PathVariable UUID id) {
         return userService.getUserById(id);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable long id, @RequestBody User user) {
+    public User updateUser(@PathVariable UUID id, @RequestBody User user) {
         return userService.updateUser(id, user);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable long id) {
+    public void deleteUser(@PathVariable UUID id) {
         userService.deleteUser(id);
     }
 
