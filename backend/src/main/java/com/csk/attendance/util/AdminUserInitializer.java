@@ -18,10 +18,11 @@ public class AdminUserInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userRepository.findByName("admin").orElseGet(() -> {
+        userRepository.findByEmail("admin").orElseGet(() -> {
             User admin = new User();
             admin.setId(UUID.randomUUID());
             admin.setName("admin");
+            admin.setEmail("admin");
             admin.setPassword(passwordEncoder.encode("secret123"));
             admin.setRole(User.Role.ADMIN);
             return userRepository.save(admin);

@@ -33,7 +33,7 @@ public class AuthController {
             HttpServletResponse res
     ) {
         UsernamePasswordAuthenticationToken token =
-                new UsernamePasswordAuthenticationToken(loginRequest.getName(), loginRequest.getPassword());
+                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword());
         Authentication auth = authManager.authenticate(token);
 
         // Build a new SecurityContext and save it in the session
@@ -41,7 +41,7 @@ public class AuthController {
         context.setAuthentication(auth);
         contextRepo.saveContext(context, req, res);
 
-        return ResponseEntity.ok(Map.of("username", auth.getName(), "roles", auth.getAuthorities()));
+        return ResponseEntity.ok(Map.of("email", auth.getName(), "roles", auth.getAuthorities()));
     }
 }
 
